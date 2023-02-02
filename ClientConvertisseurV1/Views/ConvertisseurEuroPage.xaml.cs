@@ -102,10 +102,16 @@ namespace ClientConvertisseurV1.Views
         {
             WSService service = new WSService("https://localhost:7155/api/");
             List<Devise> result = await service.GetDevisesAsync("devises");
-            LesDevises = new ObservableCollection<Devise>(result);
+            if (result == null)
+            {
+                ErrorMethod("Erreur", "Il n y a pas de liste");
+            }
+            else
+                LesDevises = new ObservableCollection<Devise>(result);
         }
         protected void OnPropertyChanged(string name)
         {
+            
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)
             {
@@ -114,9 +120,24 @@ namespace ClientConvertisseurV1.Views
         }
         private void ConvertMoney(object sender, RoutedEventArgs e)
         {
-            Resultat1 = SelectedDevise.Taux * Montant;
+            if ( selectedDevise == null)
+            {
+                ErrorMethod("Erreur", "Vous n'avez pas selecctionée de Devise");
+            }
+            else
+                Resultat1 = SelectedDevise.Taux * Montant;
         }
-
+        private async void ErrorMethod(string title, string content)
+        {
+            ContentDialog maContentDialog = new ContentDialog
+            {
+                Title = title,
+                Content = content,
+                CloseButtonText = "Ok"
+            };
+            maContentDialog.XamlRoot = this.Content.XamlRoot;
+            ContentDialogResult result = await maContentDialog.ShowAsync();
+        }
 
     }
 }

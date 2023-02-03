@@ -55,8 +55,9 @@
             Width="180"
             Margin="0,20,0,10"
             Content="Convertir"
+            Command="{Binding BtnSetConversion}"
             RelativePanel.AlignHorizontalCenterWithPanel="True"
-            RelativePanel.Below="Liste" />
+            RelativePanel.Below="Liste" />  
         <TextBlock
             x:Name="MontantDevise"
             Margin="0,20,0,0"
@@ -71,7 +72,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             RelativePanel.Below="MontantDevise"
-            Text="{Binding Resultat1, Mode=TwoWay}"
+            Text="{Binding Resultat, Mode=TwoWay}"
             TextWrapping="Wrap" />
     </RelativePanel>
 </Page>

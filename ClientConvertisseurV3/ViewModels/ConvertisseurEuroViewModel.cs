@@ -26,10 +26,10 @@ namespace ClientConvertisseurV3.ViewModels
 
         public ConvertisseurEuroViewModel(ObservableCollection<Devise> lesDevises, double montant, double resultat, Devise selectedDevise)
         {
-            this.lesDevises = lesDevises;
-            this.montant = montant;
-            this.resultat = resultat;
-            this.selectedDevise = selectedDevise;
+            this.LesDevises = lesDevises;
+            this.Montant = montant;
+            this.Resultat = resultat;
+            this.SelectedDevise = selectedDevise;
         }
 
         private ObservableCollection<Devise> lesDevises;
